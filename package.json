@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Jon's Portfolio",
   "main": "index.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,29 +1,34 @@
 import React from "react";
-import jontz from '../jontz.webp';
+import { Link } from "react-router-dom";
+import jontz from '../JonLane.png';
 
 const Navbar = () => {
-  return(
-      <nav className = "navbar">
-        <div className = "navbar-container">
+  return (
+    <nav className="navbar">
+      <div className="navbar-container">
 
-          <div className = "logo">
-            <a href="/">
-              <img src={jontz} className="logo" alt="logo" />
-            </a>
-          </div>
-
-          <ul className = "navbar-list">
-            <li>HOME</li>
-            <li>WORK</li>
-            {/* <li>Art</li>
-            <li>Design</li>
-            <li>Music</li>
-            <li>Furniture</li> */}
-            <li>CONTACT</li>
-          </ul>
-
+        <div className="logo-container">
+          <Link to="/">
+            <img src={jontz} className="logo-image" alt="logo" />
+          </Link>
         </div>
-      </nav>
+
+        <ul className="navbar-list">
+          <li>
+            <Link to="/" className="navbar-link">HOME </Link>
+          </li>
+
+          <li>
+            <Link to="/work" className="navbar-link">WORK</Link>
+          </li>
+
+          <li>
+            <Link to="/contact" className="navbar-link">CONTACT</Link>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
 
 
 
