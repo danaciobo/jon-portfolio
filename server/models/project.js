@@ -1,43 +1,25 @@
-const mongoose = require('../db.js');
+import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
-  email: {
+const projectSchema = new mongoose.Schema({
+  title: {
     type: String,
-    required: [true, 'Please provide an Email!'],
-    unique: [true, 'Email Exist'],
+    required: [true, 'Please provide a title'],
+    unique: [true, 'Project Exists'],
   },
-  password: {
-    type: String,
-    required: true,
-    minlength: 6,
-  },
-  firstName: {
+  description: {
     type: String,
     required: true,
+    minlength: 50,
   },
-  lastName: {
+  category: {
     type: String,
     required: true,
   },
-  avatar: {
-    type: String,
-  },
-  phoneNumber: {
-    type: String,
-    required: true,
-  },
-  itemsForSale: [
-    {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Item'
-    }
-],
-  itemsBought: [
-    {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Item'
-    }
-],
+  image: [
+     {
+      type: Object,
+      required: true
+    }]
 });
 
-module.exports = mongoose.model('User', userSchema);
+export default mongoose.model('Project', projectSchema);
