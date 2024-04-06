@@ -1,5 +1,15 @@
 import {Router} from 'express';
+import { getProjects, getProjectById, createProject, updateProject, deleteProject } from "./controllers/projectController.js"
+import create_email from './controllers/emailController.js';
 
-export const router = Router();
+const router = Router();
 
-router.get('/', (req, res) => {res.send('Hello there')});
+router.get('/projects', getProjects);
+router.get('/projects/:id', getProjectById)
+router.post('/projects/:id', createProject);
+router.put('/projects/:id', updateProject);
+router.delete('/projects/:id', deleteProject)
+
+router.post('/send-email', create_email)
+
+export default router;

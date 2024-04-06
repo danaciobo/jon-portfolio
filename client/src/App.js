@@ -6,22 +6,30 @@ import Work from './pages/WorkPage';
 import Contact from './pages/ContactPage';
 import Admin from './pages/AdminPage';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import SignIn from './components/SignIn';
+import { AuthProvider } from './services/context';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
 
     <div className="App">
-
-      <Router>
-      <Navbar />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/work" element ={<Work />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/admin" element={<Admin />} />
-        </Routes>
-      </Router>
-
+      <AuthProvider>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/work" element={<Work />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/admin" element={<PrivateRoute />}>
+              <Route index element={<Admin />} />
+            </Route>
+          </Routes>
+          <Footer />
+        </Router>
+      </AuthProvider>
     </div>
   );
 }
