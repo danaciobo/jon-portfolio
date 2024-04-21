@@ -17,13 +17,18 @@ const ProjectModal = ({ project, onClose }) => {
         <div className="close-btn" onClick={onClose}>x</div>
 
         <div className="modal-info">
-          <h2 className="modal-title">{project.title}</h2>
-          <p className="modal-description">{project.description}</p>
-          <p className="modal-description">{project.description}</p>
-          <p className="modal-description">{project.description}</p>
+          <div>
+          <p className="modal-title">{project.title}</p>
+          <p className="modal-category">{project.category}</p>
+          </div>
+          <div className="modal-description">{project.description}</div>
         </div>
-        <img src={project.image_path} alt={project.title} className="modal-img" />
-        <img src={project.image_path} alt={project.title} className="modal-img" />
+        <div className="modal-project-images">
+          {project.images.map((image, index) => (
+            <img key={index} src={image} alt={`${project.title} ${index + 1}`} className="modal-project-image" />
+          ))}
+        </div>
+        <div dangerouslySetInnerHTML={{ __html: project.audio }}></div>
       </div>
 
     </div>

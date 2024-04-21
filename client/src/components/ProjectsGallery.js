@@ -15,8 +15,10 @@ const ProjectsGallery = ({ projects, selectedCategory, onProjectClick }) => {
           key={project.id}
           title={project.title}
           description={project.description}
-          image_path={project.image_path}
+          images={project.images}
           category={project.category}
+          audio={project.audio}
+          preview_image={project.preview_image}
           onClick={() => onProjectClick(project)}
         />
       ))}

@@ -1,29 +1,25 @@
-import React from 'react';
-import { auth } from '../services/firebase';
-import { signInWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-
+import { useAuth } from '../services/UserContext'; // Correct import path as necessary
 
 const SignIn = ({ onClose }) => {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { handleSignIn, authError } = useAuth();
 
-  const handleSignIn = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      console.log("User signed in successfully");
+    await handleSignIn(email, password);
+    if (!authError) {
       onClose();
-      navigate("/admin")
-    } catch (error) {
-      console.error("Error signing in: ", error);
+      navigate("/admin");
     }
   };
 
   return (
     <div className="login-form">
-      <form onSubmit={handleSignIn}>
+      <form onSubmit={handleSubmit}>
         <input
           type="email"
           value={email}
@@ -38,10 +34,10 @@ const SignIn = ({ onClose }) => {
           placeholder="Password"
           required
         />
-        <button className="signin-close-button" onClick={onClose}>x</button>
+        <button type="button" className="close-button" onClick={onClose}>X</button>
         <button type="submit">Sign In</button>
+        {authError && <div className="auth-error-message">{authError}</div>}
       </form>
-
     </div>
   );
 };

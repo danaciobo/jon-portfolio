@@ -62,7 +62,7 @@ const ContactForm = () => {
             <textarea id="message" name="message" value={form.message} onChange={handleChange} />
           </div>
 
-          <button type="submit">Send</button>
+          <button className="send-button" type="submit">Send</button>
 
         </form>
         {message.text && (<div className={message.type === "success" ? "success-message" : "error-message"}>{message.text}</div>)}

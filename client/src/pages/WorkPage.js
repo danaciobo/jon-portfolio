@@ -3,11 +3,14 @@ import { useState } from "react";
 import ProjectFilter from "../components/ProjectFilter";
 import ProjectsGallery from "../components/ProjectsGallery";
 import ProjectModal from "../components/ProjectModal";
-import projects from "../assets/projects";
+// import projects from "../assets/projects";
+import { useProjects } from "../services/ProjectsContext";
 
 const categories = ["All", "Design", "Music", "Furniture"]
 
 const Work = () => {
+
+  const { projects, isLoading } = useProjects();
 
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedProject, setSelectedProject] = useState(null);

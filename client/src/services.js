@@ -24,3 +24,28 @@ export const sendEmailData = async (data) => {
     throw new Error('Failed to send email data');
   }
 }
+
+
+
+// Utility function to upload images to Cloudinary
+export const uploadFilesToCloudinary = async (files) => {
+  const url = 'https://api.cloudinary.com/v1_1/dt9lltsq3/image/upload';
+  const uploadPreset = 'portfolio';
+  console.log(files)
+  const fileList = Array.isArray(files) ? files : [files];
+  const uploads = fileList.map(file => {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', uploadPreset);
+
+    return fetch(url, {
+      method: 'POST',
+      body: formData,
+    })
+    .then(response => response.json())
+    .then(data => data.secure_url) // Use secure_url or url depending on your preference
+    .catch(err => console.error('Cloudinary upload error:', err));
+  });
+
+  return Promise.all(uploads);
+};

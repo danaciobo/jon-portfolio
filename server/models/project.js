@@ -9,17 +9,22 @@ const projectSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
-    minlength: 50,
+    minlength: 10,
   },
   category: {
     type: String,
     required: true,
   },
   images:
-     {
-      type: [String],
-      required: true
-    }
-});
+  {
+    type: [String],
+    required: true
+  },
+  audio: {type: String},
+  preview_image: {
+    type: String
+  }
+},
+);
 
 export default mongoose.model('Project', projectSchema);

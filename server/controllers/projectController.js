@@ -1,10 +1,11 @@
 import Project from "../models/project.js";
-import cloudinary from "../middleware/cloudinary.js"
+// import cloudinary from "../middleware/cloudinary.js"
 
 
 export const getProjects = async (req, res) => {
   try {
     const projects = await Project.find();
+    console.log(projects)
     res.status(200).json(projects);
   } catch (e) {
     console.log(e);
@@ -31,26 +32,22 @@ export const getProjectById = async (req, res) => {
 
 export const createProject = async (req, res) => {
 
-  const { title, description, category, images } = req.body;
+  const { title, description, category, images, audio, preview_image } = req.body;
 
   if (!images || images.length === 0) {
     return res.status(400).json({ message: 'At least one image is required' });
   }
 
   try {
-    const uploadResponses = await Promise.all(
-      images.map(image =>
-        cloudinary.uploader.upload(image, { upload_preset: 'project_preset' })
-      )
-    );
 
-    const imageUrls = uploadResponses.map(upload => upload.url);
 
     const newProject = await Project.create({
       title,
       description,
       category,
-      images: imageUrls,
+      images,
+      audio,
+      preview_image,
       date_added: Date.now(),
     });
 
@@ -67,7 +64,7 @@ export const createProject = async (req, res) => {
 
 export const updateProject = async (req, res) => {
 
-  const { title, description, category, new_images } = req.body;
+  const { title, description, category, images, audio, preview_image } = req.body;
   const { id } = req.params;
 
   try {
@@ -76,16 +73,16 @@ export const updateProject = async (req, res) => {
       return res.status(404).json({ message: 'Project not found' });
     }
 
-    const uploadResponses = await Promise.all(
-      new_images.map(image =>
-        cloudinary.uploader.upload(image, { upload_preset: 'project_preset' })
-      )
-    );
-    const new_images_urls = uploadResponses.map(upload => upload.url);
+    // const uploadResponses = await Promise.all(
+    //   new_images.map(image =>
+    //     cloudinary.uploader.upload(image, { upload_preset: 'project_preset' })
+    //   )
+    // );
+    // const new_images_urls = uploadResponses.map(upload => upload.url);
 
     const updatedProject = await Project.findByIdAndUpdate(
       id,
-      { title, description, category, images: new_images_urls},
+      { title, description, category, images, audio, preview_image},
       { new: true }
     );
 
