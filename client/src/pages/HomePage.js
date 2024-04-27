@@ -4,6 +4,7 @@ import ProjectsGallery from "../components/ProjectsGallery";
 // import projects from "../assets/projects";
 import ProjectModal from "../components/ProjectModal";
 import { useProjects } from "../services/ProjectsContext";
+import { shuffleProjects } from "../services";
 
 
 const Home = () => {
@@ -11,6 +12,8 @@ const Home = () => {
   const { projects, isLoading } = useProjects();
 
   const [selectedProject, setSelectedProject] = useState(null);
+
+  const shuffledProjects = shuffleProjects(projects);
 
   const handleProjectClick = (project) => {
     setSelectedProject(project);
@@ -20,8 +23,9 @@ const Home = () => {
     setSelectedProject(null);
   };
   return (
+
     <div>
-    <ProjectsGallery projects={projects} onProjectClick={handleProjectClick}/>
+    <ProjectsGallery projects={shuffledProjects} onProjectClick={handleProjectClick}/>
     {selectedProject && <ProjectModal project={selectedProject} onClose={closeModal} />}
     </div>
   )

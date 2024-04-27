@@ -1,5 +1,9 @@
 :root {
   --font-primary: Sofia Sans, Arial, sans-serif;
+  --color-primary: rgb(50, 50, 50);
+  --color-secondary: rgb(80, 80, 80);
+  --color-background: rgb(228, 217, 217);
+  --color-button: rgb(137, 134, 134);
 }
 
 
@@ -10,6 +14,20 @@
   font-family: var(--font-primary);
 
 }
+
+/* Footer position  */
+
+.app, .work-container, .admin-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.footer-container {
+  margin-top: auto;
+}
+
+/* Navbar Styles */
 
 .navbar {
   padding: 0.2rem;
@@ -35,14 +53,15 @@
 
 }
 
-.navbar-list li .navbar-link {
-  text-decoration: none;
-  color: rgb(50, 50, 50);
-}
-
 .navbar-list li:hover {
   font-weight: bold
 }
+
+.navbar-link {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
 
 .logo-image {
   height: 11vh;
@@ -50,6 +69,8 @@
   padding-bottom: 0;
 
 }
+
+/* Project Gallery Styles */
 
 .project-gallery {
   display: grid;
@@ -95,15 +116,16 @@
 .project-title {
   font-size: 1.35rem;
   margin-bottom: 1rem;
-  color: rgb(50, 50, 50);
+  color: var(--color-primary);
   font-weight: bold;
 
 }
 
-
 .project-container:hover .project-info {
   opacity: 1;
 }
+
+/* Filter Styles */
 
 .filter-container {
   display: flex;
@@ -127,7 +149,7 @@
   list-style-type: none;
   margin-right: 1.5rem;
   font-size: 1rem;
-  color: rgb(80, 80, 80);
+  color: var(--color-secondary);
   cursor: pointer;
 }
 
@@ -138,6 +160,8 @@
 .filter-item.active {
   font-weight: bold
 }
+
+/* Project Modal Styles */
 
 .project-modal {
   position: fixed;
@@ -160,7 +184,6 @@
   position: fixed;
   top: 0;
   right: 50%;
-  transform: translateY(-50%);
   transform: translateX(50%);
   overflow-y: auto;
   max-height: 100vh;
@@ -175,18 +198,18 @@
 .modal-title {
   font-size: 1.4rem;
   margin-bottom: 10px;
-  color: rgb(50, 50, 50);
+  color: var(--color-primary);
   font-weight: bold;
 }
 
 .modal-description {
   font-size: 16px;
-  color: rgb(50, 50, 50);
+  color: var(--color-primary);
   width: 60%
 }
 
 .modal-category {
-  color: rgb(80, 80, 80);
+  color: var(--color-secondary);
   padding: 5px 0px 50px 0px;
 
 }
@@ -197,19 +220,62 @@
   margin-bottom: 10px;
 }
 
-
+/* Button Styles */
 .close-btn {
   position: absolute;
   top: 5px;
   right: 15px;
   font-size: 1.5rem;
-  /* font-weight: bold; */
   cursor: pointer;
+}
+
+
+.close-button {
+  float: right;
+  font-size: 1.2rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+#close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  background: var(--color-button);
 }
 
 .close-btn:hover {
   color: rgb(128, 124, 124);
 }
+
+button[type="submit"] {
+  padding: 10px 30px;
+  border: none;
+  background: var(--color-button);
+  color: white;
+  cursor: pointer;
+  align-items: flex-end;
+  font-size: 16px;
+  margin: 20px 22% 0 auto
+}
+
+
+
+
+#sign-out-button {
+  border: none;
+  background: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+/* Contact Page Styles */
 
 .contact-container {
   display: flex;
@@ -274,16 +340,273 @@
 }
 
 
-button[type="submit"] {
-  margin-top: 20px;
-  padding: 10px 30px;
-  border: none;
-  background-color: #5c5454;
-  color: white;
+.success-message {
+  color: rgb(35, 117, 35);
+  margin: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.error-message {
+  color: rgb(106, 14, 14);
+  margin: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+/* Footer Styles */
+
+.footer-container {
+  margin: 1rem;
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+
+}
+
+.footer-text {
+  align-items: center;
+
+}
+
+.admin-button {
+  text-decoration: none;
+  background: var(--color-button);
+}
+
+.admin-button:hover {
+  color: #0d2d4e;
+}
+
+.login-form {
+  position: fixed;
+  width: 330px;
+  top: 85%;
+  left: 78%;
+  transform: translate(-50%, -50%);
+  background: rgb(228, 217, 217);
+  padding: 10px;
+  z-index: 100;
+}
+
+.login-form input {
+  height: 30px;
+}
+
+.signin-close-button {
+  margin: 5px;
+  padding: 5px;
+  background: rgb(228, 217, 217);
+}
+
+.footer-admin-area {
+  display: flex;
+  gap: 20px;
+  font-weight: bold;
   cursor: pointer;
-  align-items: flex-end;
-  font-size: 16px;
-  margin: 20px 22% 0 auto
+}
+
+
+
+
+/* Admin Page Styles */
+
+.project-card-admin {
+  height: 150px;
+  width: 120px;
+  margin: 10px;
+}
+
+.project-image-thumbnail {
+  height: 80%;
+  width: 100%;
+}
+
+.projects-list {
+  display: flex
+}
+
+.project-images-admin {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Add project Styles */
+
+
+.add-project-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+
+}
+
+
+.add-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+
+}
+
+.add-project-button {
+  width: 120px;
+  padding: 10px;
+  margin: 50px 10px 20px 20px;
+  border: none;
+  background: var(--color-button);
+  color: white;
+  font-weight: bold;
+  border-radius: 3px
+}
+
+
+.add-project-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+
+}
+
+
+.add-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+
+}
+
+
+.add-project-modal input[type="text"],
+input[type="file"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.add-project-modal textarea {
+  min-height: 100px
+}
+.add-project-modal label {
+
+  font-size: 14px;
+  font-weight: bold
+}
+
+
+.add-project-modal button[type="submit"] {
+  background: var(--color-button);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.add-project-modal button[type="submit"]:hover {
+  background-color: #3e5757;
+
+}
+
+
+
+/* Project Modal Admin */
+
+.project-modal-admin {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: white;
+  padding: 20px;
+  padding-top: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
+  max-height: 90%;
+  overflow-y: auto;
+  width: 700px
+}
+
+.project-modal-admin button {
+  margin: 0 10px;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  background: var(--color-button);
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.project-modal-admin button:hover {
+  background:rgb(47, 45, 44);
+}
+
+.project-modal-admin-content {
+  margin-top: 20px;
+}
+
+
+.project-image-modal-admin {
+  max-width: 100px;
+  max-height: 100px;
+  object-fit: cover;
+}
+
+
+.project-modal-admin input[type="text"],
+input[type="file"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.project-modal-admin textarea {
+  min-height: 100px
+}
+
+.project-image-modal-admin-edit {
+  height: 150px;
+  width: 150px;
+}
+.project-image-modal-admin-edit-container {
+  display: flex;
+  margin: 20px 0px
+}
+
+.project-modal-admin label {
+font-size: 14px;
+font-weight: bolder;
+  margin: 15px 0px 0px 0px
 }
 
 
@@ -377,251 +700,4 @@ padding:10px  }
   left: 50%;
   transform: translate(-50%);
 }
-}
-
-.success-message {
-  color: rgb(35, 117, 35);
-  margin: 15px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.error-message {
-  color: rgb(167, 28, 28);
-  margin: 15px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.footer-container {
-  margin: 1rem;
-  display: flex;
-  justify-content: space-between;
-  position: fixed;
-  bottom: 0;
-  width: 95%;
-
-}
-
-footer-text {
-  align-items: center;
-
-}
-
-.admin-button {
-  text-decoration: none;
-  color: rgb(118, 116, 116);
-}
-
-.admin-button:hover {
-  color: #0d2d4e;
-}
-
-.login-form {
-  position: fixed;
-  width: 330px;
-  top: 85%;
-  left: 78%;
-  transform: translate(-50%, -50%);
-  background: rgb(228, 217, 217);
-  padding: 10px;
-  z-index: 100;
-}
-
-.login-form input {
-  height: 30px;
-}
-
-.signin-close-button {
-  margin: 5px;
-  padding: 5px;
-  background: rgb(228, 217, 217);
-}
-
-.add-project-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.project-card-admin {
-  height: 150px;
-  width: 120px;
-  margin: 10px;
-}
-
-.project-image-thumbnail {
-  height: 80%;
-  width: 100%;
-}
-
-.projects-list {
-  display: flex
-}
-
-.project-modal-admin {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
-  background: white;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 80%;
-  max-height: 90%;
-  overflow-y: auto;
-  /* Allows scrolling if the content is taller than the modal */
-}
-
-.project-modal-admin button {
-  margin: 0 10px;
-  padding: 8px 16px;
-  border: none;
-  cursor: pointer;
-  background-color: #5ccaca;
-  color: white;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.project-modal-admin button:hover {
-  background-color: #1b7676;
-}
-
-.project-modal-admin-content {
-  margin-top: 20px;
-}
-
-.project-images-admin {
-  display: flex;
-  flex-wrap: wrap;
-  overflow-x: auto;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.project-image-modal-admin {
-  max-width: 100px;
-  max-height: 100px;
-  object-fit: cover;
-}
-
-#close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  background-color: rgb(195, 194, 193);
-}
-
-.add-project-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  /* semi-transparent */
-  z-index: 1000;
-  /* Ensure it's on top of other content */
-}
-
-/* The modal content box */
-.add-modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 500px;
-  width: 90%;
-  /* Responsive width */
-}
-
-/* Style the close button for the modal */
-.close-button {
-  float: right;
-  font-size: 1.2rem;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-/* Style for input fields */
-.add-project-modal input[type="text"],
-input[type="file"],
-textarea {
-  width: 100%;
-  /* Full width */
-  padding: 8px;
-  margin: 10px 0;
-  /* Add some space between fields */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Enhance the appearance of the submit button */
-.add-project-modal button[type="submit"] {
-  background-color: #5ccaca;
-  /* A nice green */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 10px;
-  /* Some space above the button */
-}
-
-.add-project-modal button[type="submit"]:hover {
-  background-color: #1b7676;
-  /* Darker green on hover */
-}
-
-#sign-out-button {
-  border: none;
-  background: none;
-  font-size: 16px;
-  font-weight: bold;
-  color: rgb(74, 63, 55)
-}
-
-.footer-admin-area {
-  display: flex;
-  gap: 20px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.project-modal-admin input[type="text"],
-input[type="file"],
-textarea {
-  width: 100%;
-  /* Full width */
-  padding: 8px;
-  margin: 10px 0;
-  /* Add some space between fields */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.project-modal-admin textarea {
-  min-height: 100px
-}
-
-.project-image-modal-admin-edit {
-  height: 200px;
-  width: 200px;
 }

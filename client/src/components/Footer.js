@@ -24,10 +24,10 @@ const Footer = () => {
   return (
     <div className="footer-container">
       <div className="footer-text">© Jon Lane 2024 | website created by dana_ciobo</div>
-      {/* Always show Admin, functionality depends on auth state */}
+
       <div className="footer-admin-area">
         <div onClick={handleAdminClick}>Admin</div>
-        {/* Show SignIn modal if showModal is true */}
+
         {showModal && <SignIn onClose={closeModal} />}
         {currentUser && <SignOut />}
       </div>

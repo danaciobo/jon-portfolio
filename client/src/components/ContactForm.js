@@ -28,7 +28,7 @@ const ContactForm = () => {
     try {
 
       const response = await sendEmailData(form);
-      console.log(response);
+
       setMessage({ text: "Email sent succesfully!", type: "success" })
       setForm({ name: "", email: "", message: "" });
     } catch (error) {

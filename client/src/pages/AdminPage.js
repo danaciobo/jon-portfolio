@@ -20,7 +20,7 @@ const Admin = () => {
 
   return (
     <div className="admin-container">
-      <button className="add-project-btn" onClick={() => setIsAddModalOpen(true)}>Add New Project</button>
+      <button className="add-project-button" onClick={() => setIsAddModalOpen(true)}>Add New Project</button>
       <AddProjectModal
   isOpen={isAddModalOpen}
   onClose={() => setIsAddModalOpen(false)}

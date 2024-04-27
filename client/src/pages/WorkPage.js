@@ -28,7 +28,7 @@ const Work = () => {
   };
 
   return (
-    <div>
+    <div className="work-container">
     <ProjectFilter categories={categories} onSelectCategory={handleCategoryClick} selectedCategory= {selectedCategory}/>
     <ProjectsGallery projects={projects} selectedCategory={selectedCategory} onProjectClick={handleProjectClick}/>
     {selectedProject && <ProjectModal project={selectedProject} onClose={closeModal} />}

@@ -8,14 +8,14 @@ export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const [authError, setAuthError] = useState(''); // Store authentication errors
+  const [authError, setAuthError] = useState('');
   const [authInitialized, setAuthInitialized] = useState(false);
 
   useEffect(() => {
 
       const unsubscribe = onAuthStateChanged(auth, user => {
         setCurrentUser(user);
-        setAuthInitialized(true); // Set to true once we know the user's auth state
+        setAuthInitialized(true);
       });
 
     return unsubscribe;
@@ -24,9 +24,9 @@ export const AuthProvider = ({ children }) => {
   const handleSignIn = async (email, password) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      setAuthError(''); // Clear previous errors on successful sign-in
+      setAuthError('');
     } catch (error) {
-      // Handle different error codes and set appropriate messages
+
       switch (error.code) {
         case 'auth/wrong-password':
           setAuthError('Incorrect password. Please try again.');

@@ -3,7 +3,7 @@ import send_email from "./send_email.js";
 const create_email = async (req, res) => {
   try {
     const { name, email, message } = req.body;
-    console.log({ name, email, message });
+
     await send_email({
 name, email, message
     });

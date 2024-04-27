@@ -20,6 +20,7 @@ export const ProjectsProvider = ({ children }) => {
     try {
       const response = await fetch(`${REACT_APP_BACKEND_HOST}/projects`);
       const data = await response.json();
+
       setProjects(data);
     } catch (error) {
       console.error("Failed to fetch projects:", error);
@@ -31,7 +32,6 @@ export const ProjectsProvider = ({ children }) => {
   const handleAddProject = async (projectData, images, preview_image) => {
     const imageUrls = await uploadFilesToCloudinary(images)
     const preview_imageUrl = await uploadFilesToCloudinary(preview_image)
-    console.log(imageUrls)
 
     projectData.images = imageUrls;
     projectData.preview_image = preview_imageUrl[0];
@@ -58,8 +58,7 @@ export const ProjectsProvider = ({ children }) => {
   };
 
   const handleUpdateProject = async (id, updatedData) => {
-    // const imageUrls = await uploadFilesToCloudinary(images);
-    // updatedData.images = imageUrls;
+
     try {
       const response = await fetch(`${REACT_APP_BACKEND_HOST}/projects/${id}`, {
         method: 'PUT',

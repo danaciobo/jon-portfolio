@@ -31,7 +31,7 @@ export const sendEmailData = async (data) => {
 export const uploadFilesToCloudinary = async (files) => {
   const url = 'https://api.cloudinary.com/v1_1/dt9lltsq3/image/upload';
   const uploadPreset = 'portfolio';
-  console.log(files)
+
   const fileList = Array.isArray(files) ? files : [files];
   const uploads = fileList.map(file => {
     const formData = new FormData();
@@ -48,4 +48,12 @@ export const uploadFilesToCloudinary = async (files) => {
   });
 
   return Promise.all(uploads);
+};
+
+export const shuffleProjects = array => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
 };

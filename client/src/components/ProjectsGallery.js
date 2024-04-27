@@ -7,7 +7,7 @@ const ProjectsGallery = ({ projects, selectedCategory, onProjectClick }) => {
   const filteredProjects = selectedCategory && selectedCategory !== "All"
     ? projects.filter(project => project.category === selectedCategory)
     : projects;
-  console.log(projects)
+
   return (
     <div className="project-gallery">
       {filteredProjects.map(project => (

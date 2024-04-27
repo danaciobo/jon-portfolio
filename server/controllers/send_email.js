@@ -9,7 +9,7 @@ const RECEIVER_EMAIL = process.env.RECEIVER_EMAIL;
 async function send_email({ name, email, message }) {
 
   try {
-    console.log(USER_EMAIL, USER_EMAIL_PASSWORD)
+
     const transporter = nodemailer.createTransport({
       host: "smtp.mail.yahoo.com",
       port: 465,

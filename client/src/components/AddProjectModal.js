@@ -44,10 +44,20 @@ if (!isOpen) return null;
         <form onSubmit={handleSubmit}>
           <input type="text" value={title} onChange = {(e) => setTitle(e.target.value)} placeholder="Project title" required />
           <textarea value={description} onChange = {(e) => setDescription(e.target.value)} placeholder="Project description" required />
+
           <input type="text" value={category} onChange = {(e) => setCategory(e.target.value)} placeholder="Project category" required />
+          <div>
+            <label htmlFor="preview-image">Preview Image:</label>
           <input type="file" accept="image/*" onChange={(e) => setPreview_image(e.target.files[0])} />
+          </div>
+          <div>
+            <label htmlFor="project-images">Project Images:</label>
           <input type="file" multiple accept="image/*,audio/*" onChange={handleImages} />
-          <input type="text" value={audio} onChange={(e) => setAudio(e.target.value)} placeholder="SoundCloud Track URL" />
+          </div>
+          <div>
+          <label htmlFor="audio-file">Audio File:</label>
+          <input type="text" value={audio} onChange={(e) => setAudio(e.target.value)} placeholder="Paste SoundCloud Embed code" />
+          </div>
           <button type="submit">Add project</button>
 
 

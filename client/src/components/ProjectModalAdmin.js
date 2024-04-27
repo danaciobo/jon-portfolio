@@ -18,7 +18,7 @@ const ProjectModalAdmin = ({ project, onClose }) => {
 
   const toggleEditMode = () => {
     setIsEditMode(!isEditMode);
-    // Reset deleted images on cancel
+
     if (isEditMode) {
       setDeletedImages([]);
       setNewImages([]);
@@ -45,8 +45,17 @@ const ProjectModalAdmin = ({ project, onClose }) => {
   const handlePreviewImageChange = async (event) => {
     const file = event.target.files[0];
     if (file) {
-      const url = await uploadFilesToCloudinary(file);
-      setFormData({ ...formData, preview_image: url[0] }); // Expecting single URL response
+      const urls = await uploadFilesToCloudinary(file);
+      const imageUrl = urls[0];
+
+      if (imageUrl) {
+        setFormData({ ...formData, preview_image: imageUrl });
+
+      } else {
+
+        console.error("Failed to upload the preview image.");
+        alert("Failed to upload the preview image.");
+      }
     }
   };
 
@@ -55,15 +64,15 @@ const ProjectModalAdmin = ({ project, onClose }) => {
       const urls = await uploadFilesToCloudinary(newImages);
       formData.images = [...formData.images, ...urls];
     }
-    // Optionally handle deleted images here if they need to be removed from the server
+
     await handleUpdateProject(project._id, formData);
     setIsEditMode(false);
-    onClose(); // Optionally close the modal on save
+    onClose();
   };
 
   return (
     <div className="project-modal-admin">
-      <button id="close-button" onClick={onClose}>x</button>
+      <button className="close-button" onClick={onClose}>x</button>
       {isEditMode ? (
         <>
           <input
@@ -83,13 +92,14 @@ const ProjectModalAdmin = ({ project, onClose }) => {
             value={formData.description}
             onChange={handleChange}
           />
-
+          <div className="project-image-modal-admin-edit-container">
           {formData.images.map((imgUrl, index) => (
             <div key={index}>
               <img src={imgUrl} alt={`Project ${formData.title}`} className="project-image-modal-admin-edit" />
               <button onClick={() => handleImageDelete(index)}>Delete</button>
             </div>
           ))}
+          </div>
           {newImages.length > 0 && (
             <div>New Images to Upload:
               {newImages.map((file, index) => (
@@ -97,16 +107,25 @@ const ProjectModalAdmin = ({ project, onClose }) => {
               ))}
             </div>
           )}
-          <input type="file" multiple onChange={handleNewImageChange} />
-          <input
-            type="text"
-            name="audio"
-            value={formData.audio}
-            onChange={handleChange}
-            placeholder="SoundCloud Track URL"
+          <div>
+            <label htmlFor="project-images">Add Project Images:</label>
+            <input type="file" multiple onChange={handleNewImageChange} />
+          </div>
+          <div><label htmlFor="audio-file">Change Audio File:</label>
+            <input
+              type="text"
+              name="audio"
+              value={formData.audio}
+              onChange={handleChange}
+              placeholder="SoundCloud Track URL"
 
-          />
+            />
+          </div>
+
+          <div>
+            <label htmlFor="preview-image">Change Preview Image:</label>
           <input type="file" onChange={handlePreviewImageChange} />
+          </div>
           <button onClick={handleSaveChanges}>Save Changes</button>
           <button onClick={toggleEditMode}>Cancel</button>
         </>
@@ -118,13 +137,23 @@ const ProjectModalAdmin = ({ project, onClose }) => {
             <h2>{project.title}</h2>
             <h3>{project.category}</h3>
             <p>{project.description}</p>
+            <div>
+            <label htmlFor="project-images">Project images:</label>
             <div className="project-images-admin">
               {project.images.map((image, index) => (
                 <img key={index} src={image} alt={`${project.title} ${index + 1}`} className="project-image-modal-admin" />
               ))}
             </div>
+            </div>
+            <div>
+            <label htmlFor="audio-file">Audio File:</label>
             <div dangerouslySetInnerHTML={{ __html: project.audio }}></div>
-            <img src={project.preview_image} alt="Preview" />
+            </div>
+            <div>
+            <label htmlFor="preview-image">Preview Image:</label>
+            </div>
+            <img src={project.preview_image} alt="Preview" className="project-image-modal-admin" />
+
           </div>
         </>
       )}

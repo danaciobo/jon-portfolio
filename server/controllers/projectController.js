@@ -1,11 +1,10 @@
 import Project from "../models/project.js";
-// import cloudinary from "../middleware/cloudinary.js"
 
 
 export const getProjects = async (req, res) => {
   try {
     const projects = await Project.find();
-    console.log(projects)
+
     res.status(200).json(projects);
   } catch (e) {
     console.log(e);
