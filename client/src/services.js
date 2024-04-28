@@ -1,6 +1,6 @@
 const { REACT_APP_BACKEND_HOST } = process.env;
 
-const baseURL = REACT_APP_BACKEND_HOST;
+const baseURL = REACT_APP_BACKEND_HOST || "http://localhost:3005";
 
 
 export const sendEmailData = async (data) => {

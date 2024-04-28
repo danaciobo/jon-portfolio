@@ -3,6 +3,7 @@ import { uploadFilesToCloudinary } from '../services';
 const { REACT_APP_BACKEND_HOST } = process.env;
 
 
+const baseURL = REACT_APP_BACKEND_HOST || "http://localhost:3005";
 const ProjectsContext = createContext();
 
 export const useProjects = () => useContext(ProjectsContext);
@@ -18,7 +19,7 @@ export const ProjectsProvider = ({ children }) => {
 
   const fetchProjects = async () => {
     try {
-      const response = await fetch(`${REACT_APP_BACKEND_HOST}/projects`);
+      const response = await fetch(`${baseURL}/projects`);
       const data = await response.json();
 
       setProjects(data);
@@ -37,7 +38,7 @@ export const ProjectsProvider = ({ children }) => {
     projectData.preview_image = preview_imageUrl[0];
 
     try {
-      const response = await fetch(`${REACT_APP_BACKEND_HOST}/projects`, {
+      const response = await fetch(`${baseURL}/projects`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -60,7 +61,7 @@ export const ProjectsProvider = ({ children }) => {
   const handleUpdateProject = async (id, updatedData) => {
 
     try {
-      const response = await fetch(`${REACT_APP_BACKEND_HOST}/projects/${id}`, {
+      const response = await fetch(`${baseURL}/projects/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -83,7 +84,7 @@ export const ProjectsProvider = ({ children }) => {
   const handleDeleteProject = async (id) => {
 
     try {
-      const response = await fetch(`${REACT_APP_BACKEND_HOST}/projects/${id}`, {
+      const response = await fetch(`${baseURL}/projects/${id}`, {
         method: 'DELETE'
       });
 
