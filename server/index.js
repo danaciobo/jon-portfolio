@@ -21,3 +21,8 @@ app.use(router);
 
 
 app.listen(PORT, () => {console.log(`Server is running on port ${PORT}`)})
+
+// { "src": "/api/get-project-by-id", "dest": "api/getProjectById.js" },
+// { "src": "/api/create-project", "dest": "api/createProject.js", "methods": ["POST"] },
+// { "src": "/api/update-project", "dest": "api/updateProject.js", "methods": ["PUT"] },
+// { "src": "/api/delete-project", "dest": "api/deleteProject.js", "methods": ["DELETE"] }
