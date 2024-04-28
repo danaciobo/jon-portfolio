@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 export default async function handler(req, res) {
   try {
     // Connect to the database
-    await mongoose.connect(process.env.MY_DB_URL)
+    mongoose.connect(process.env.MY_DB_URL)
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('Could not connect to MongoDB:', err));
 
