@@ -2,6 +2,7 @@ import React, {useState} from "react";
 
 const AddProjectModal = ({isOpen, onClose, handleAddProject}) => {
 
+  // State management for project data
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
@@ -9,10 +10,12 @@ const AddProjectModal = ({isOpen, onClose, handleAddProject}) => {
   const [audio, setAudio] = useState("");
   const [preview_image, setPreview_image] = useState("");
 
+
+  // function to handle multiple images
   const handleImages = (e) => {
     setFiles([...e.target.files]); }
 
-
+// function to submit form
     const handleSubmit = (e) => {
       e.preventDefault();
       const projectData = {
@@ -23,18 +26,22 @@ const AddProjectModal = ({isOpen, onClose, handleAddProject}) => {
 
       }
 
-
+// function to send new project to backend
       handleAddProject(projectData, files, preview_image);
+
+// reset form fields
       setTitle("");
       setDescription("");
       setCategory("");
       setAudio("");
       setFiles([]);
       setPreview_image("")
+      // close the modal
 onClose();
 
     }
 
+  // show nothing if the modal is not open
 if (!isOpen) return null;
 
   return(
