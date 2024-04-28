@@ -19,7 +19,7 @@ export const ProjectsProvider = ({ children }) => {
 
   const fetchProjects = async () => {
     try {
-      const response = await fetch(`${baseURL}/projects`);
+      const response = await fetch(`${baseURL}/getProjects`);
       const data = await response.json();
 
       setProjects(data);
@@ -38,7 +38,7 @@ export const ProjectsProvider = ({ children }) => {
     projectData.preview_image = preview_imageUrl[0];
 
     try {
-      const response = await fetch(`${baseURL}/projects`, {
+      const response = await fetch(`${baseURL}/createProject`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ export const ProjectsProvider = ({ children }) => {
   const handleUpdateProject = async (id, updatedData) => {
 
     try {
-      const response = await fetch(`${baseURL}/projects/${id}`, {
+      const response = await fetch(`${baseURL}/updateProject/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ export const ProjectsProvider = ({ children }) => {
   const handleDeleteProject = async (id) => {
 
     try {
-      const response = await fetch(`${baseURL}/projects/${id}`, {
+      const response = await fetch(`${baseURL}/deleteProject/${id}`, {
         method: 'DELETE'
       });
 
