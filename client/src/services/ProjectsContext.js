@@ -19,7 +19,15 @@ export const ProjectsProvider = ({ children }) => {
 
   const fetchProjects = async () => {
     try {
-      const response = await fetch(`${baseURL}/getProjects`);
+      const response = await fetch(`${baseURL}/getProjects`, {
+        method: 'GET',
+        headers: {
+          'Origin': 'https://jon-portfolio-frontend-3pljbyrex-danas-projects-c2a15bb3.vercel.app',
+          'Access-Control-Request-Method': 'GET',
+          'Access-Control-Request-Headers': 'Authorization'
+        }
+      }
+      )
       const data = await response.json();
 
       setProjects(data);
