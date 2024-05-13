@@ -16,8 +16,8 @@ export default async function handler(req, res) {
   }
 
   const { title, description, category, images, audio, preview_image } = req.body;
-  const {id} = req.params;
-  console.log(id)
+  const id = req.query.id;
+    console.log('Project ID:', id);
 
   try {
     // Connect to the database
