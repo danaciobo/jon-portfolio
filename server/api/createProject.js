@@ -6,6 +6,15 @@ config();
 
 export default async function handler(req, res) {
 
+  if (req.method === 'OPTIONS') {
+    // Respond to preflight request
+    res.setHeader('Access-Control-Allow-Origin', 'https://jon-portfolio-frontend.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+    res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
+    res.status(200).end();
+    return;
+  }
+
   const { title, description, category, images, audio, preview_image } = req.body;
   if (!images || images.length === 0) {
     return res.status(400).json({ message: 'At least one image is required' });
