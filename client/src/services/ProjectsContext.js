@@ -22,7 +22,7 @@ export const ProjectsProvider = ({ children }) => {
       const response = await fetch(`${baseURL}/getProjects`, {
         method: 'GET',
         headers: {
-          'Origin': 'https://jon-portfolio-frontend-3pljbyrex-danas-projects-c2a15bb3.vercel.app',
+          'Origin': 'https://jon-portfolio-frontend.vercel.app',
           'Access-Control-Request-Method': 'GET',
           'Access-Control-Request-Headers': 'Authorization'
         }
@@ -50,8 +50,8 @@ export const ProjectsProvider = ({ children }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Origin': 'https://jon-portfolio-frontend-3pljbyrex-danas-projects-c2a15bb3.vercel.app',
-          'Access-Control-Request-Method': 'GET',
+          'Origin': 'https://jon-portfolio-frontend.vercel.app',
+          'Access-Control-Request-Method': 'POST',
           'Access-Control-Request-Headers': 'Authorization'
         },
         body: JSON.stringify(projectData)
@@ -76,8 +76,8 @@ export const ProjectsProvider = ({ children }) => {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'Origin': 'https://jon-portfolio-frontend-3pljbyrex-danas-projects-c2a15bb3.vercel.app',
-          'Access-Control-Request-Method': 'GET',
+          'Origin': 'https://jon-portfolio-frontend.vercel.app',
+          'Access-Control-Request-Method': 'PUT',
           'Access-Control-Request-Headers': 'Authorization'
         },
         body: JSON.stringify(updatedData)
@@ -101,8 +101,8 @@ export const ProjectsProvider = ({ children }) => {
       const response = await fetch(`${baseURL}/deleteProject/${id}`, {
         method: 'DELETE',
         headers: {
-          'Origin': 'https://jon-portfolio-frontend-3pljbyrex-danas-projects-c2a15bb3.vercel.app',
-          'Access-Control-Request-Method': 'GET',
+          'Origin': 'https://jon-portfolio-frontend.vercel.app',
+          'Access-Control-Request-Method': 'DELETE',
           'Access-Control-Request-Headers': 'Authorization'
         },
       });
