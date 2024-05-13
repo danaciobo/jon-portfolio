@@ -17,6 +17,7 @@ export default async function handler(req, res) {
 
   const { title, description, category, images, audio, preview_image } = req.body;
   const id = req.params;
+  console.log(id)
 
   try {
     // Connect to the database

@@ -20,7 +20,8 @@ export default async function handler(req, res) {
     await mongoose.connect(process.env.MY_DB_URL);
     console.log('Connected to MongoDB');
 
-    const delectedProject = await Project.findOneAndDelete({ _id: req.params });
+    const id = req.params
+    const delectedProject = await Project.findOneAndDelete({ _id: id });
     // Close the database connection
     await mongoose.disconnect();
 
