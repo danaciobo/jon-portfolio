@@ -1,4 +1,4 @@
-import Project from "../models/project.js";
+import Project from "../../models/project.js";
 import mongoose from 'mongoose';
 import { config } from 'dotenv';
 

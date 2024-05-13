@@ -72,10 +72,7 @@ export const ProjectsProvider = ({ children }) => {
       const response = await fetch(`${baseURL}/updateProject/${id}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
-          'Origin': 'https://jon-portfolio-frontend.vercel.app',
-          'Access-Control-Request-Method': 'PUT',
-          'Access-Control-Request-Headers': 'Authorization'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(updatedData)
       });
@@ -98,9 +95,7 @@ export const ProjectsProvider = ({ children }) => {
       const response = await fetch(`${baseURL}/deleteProject/${id}`, {
         method: 'DELETE',
         headers: {
-          'Origin': 'https://jon-portfolio-frontend.vercel.app',
-          'Access-Control-Request-Method': 'DELETE',
-          'Access-Control-Request-Headers': 'Authorization'
+          'Content-Type': 'application/json',
         },
       });
 
