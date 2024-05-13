@@ -50,9 +50,6 @@ export const ProjectsProvider = ({ children }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Origin': 'https://jon-portfolio-frontend.vercel.app',
-          'Access-Control-Request-Method': 'POST',
-          'Access-Control-Request-Headers': 'Authorization'
         },
         body: JSON.stringify(projectData)
       });
