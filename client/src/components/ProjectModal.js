@@ -21,7 +21,7 @@ const ProjectModal = ({ project, onClose }) => {
           <p className="modal-title">{project.title}</p>
           <p className="modal-category">{project.category}</p>
           </div>
-          <div className="modal-description">{project.description}</div>
+          <div className="modal-description" dangerouslySetInnerHTML={{ __html: project.description }} />
         </div>
         <div className="modal-project-images">
           {project.images.map((image, index) => (

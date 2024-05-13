@@ -424,7 +424,9 @@ button[type="submit"] {
 }
 
 .projects-list {
-  display: flex
+  display: flex;
+  flex-wrap: wrap;
+
 }
 
 .project-images-admin {

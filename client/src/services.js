@@ -6,7 +6,7 @@ const baseURL = REACT_APP_BACKEND_HOST || "http://localhost:3005";
 export const sendEmailData = async (data) => {
   try {
 
-    const response = await fetch(`${baseURL}/send-email`, {
+    const response = await fetch(`${baseURL}/sendEmail`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

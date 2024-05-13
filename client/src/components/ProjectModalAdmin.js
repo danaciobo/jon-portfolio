@@ -136,7 +136,7 @@ const ProjectModalAdmin = ({ project, onClose }) => {
           <div className="project-modal-admin-content">
             <h2>{project.title}</h2>
             <h3>{project.category}</h3>
-            <p>{project.description}</p>
+            <p dangerouslySetInnerHTML={{ __html: project.description }} />
             <div>
             <label htmlFor="project-images">Project images:</label>
             <div className="project-images-admin">
